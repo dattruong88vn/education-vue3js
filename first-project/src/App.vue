@@ -1,8 +1,7 @@
 <template>
-  <div>
-    {{ name }}
-  </div>
-  <div>{{ age }}</div>
+  <div>Name: {{ name }}</div>
+  <div>Age: {{ age }}</div>
+  <div v-text="channel"></div>
 </template>
 
 <script>
@@ -12,6 +11,7 @@ export default {
     return {
       name: "Thanh Dat",
       age: 35,
+      channel: "dattruong88vn",
     };
   },
 };
