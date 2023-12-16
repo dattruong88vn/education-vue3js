@@ -11,6 +11,16 @@
     <div>{{ channelHtml }}</div>
     <div v-html="channelHtml"></div>
   </div>
+  <br />
+  <div>
+    <h2>Binding Attribute</h2>
+    <h4 v-bind:id="headingId">Heading 4 Text</h4>
+    <div v-bind:class="headingClass">
+      <div>1</div>
+      <div>2</div>
+    </div>
+    <input v-bind:disabled="isDisabled" placeholder="name" />
+  </div>
 </template>
 
 <script>
@@ -22,6 +32,9 @@ export default {
       age: 35,
       channel: "dattruong88vn",
       channelHtml: "<b>Binding Html</b>",
+      headingId: "heading-4-id",
+      headingClass: "flex justify-center items-center",
+      isDisabled: true,
     };
   },
 };

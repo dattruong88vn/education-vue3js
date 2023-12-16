@@ -26,3 +26,13 @@ Nên sử dụng Mustache Syntax, dễ đọc và performance tốt hơn so vớ
 
 Sử dụng directive `v-html="<data-name>"`.
 Cần cẩn thận khi sử dụng v-html directive, đặc biệt với các đoạn script của bên thứ ba, nó có thể chứa mã độc.
+
+---
+
+## Binding Attribute
+
+Sử dụng directive `v-bind:<attribute-name>="<data-name>"`
+Ví dụ:
+`v-bind:id`
+`v-bind:class`
+`v-bind:disabled`
