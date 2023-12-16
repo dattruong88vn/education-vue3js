@@ -36,3 +36,17 @@ Ví dụ:
 `v-bind:id`
 `v-bind:class`
 `v-bind:disabled`
+
+## Binding class
+
+Sử dụng directive `v-bind:class`
+Giá trị có thể là string, string[], câu điều kiện &&, toán tử 3 ngôi, hoặc là 1 object
+Ví dụ cho object:
+
+```
+<div v-bind:class="{
+    class1: true | false,
+    class2: true | false,
+    ...
+}">Some text</div>
+```
