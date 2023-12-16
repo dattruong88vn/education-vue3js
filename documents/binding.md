@@ -19,3 +19,10 @@ Ví dụ:
 #### 3. Tổng kết
 
 Nên sử dụng Mustache Syntax, dễ đọc và performance tốt hơn so với directive v-text.
+
+---
+
+## Binding HTML
+
+Sử dụng directive `v-html="<data-name>"`.
+Cần cẩn thận khi sử dụng v-html directive, đặc biệt với các đoạn script của bên thứ ba, nó có thể chứa mã độc.
