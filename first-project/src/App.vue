@@ -1,20 +1,23 @@
 <template>
   <!-- <Binding /> -->
   <!-- <ConditionalRendering /> -->
-  <ListRendering />
+  <!-- <ListRendering /> -->
+  <MethodEvent />
 </template>
 
 <script>
 // import Binding from "./components/Binding.vue";
 // import ConditionalRendering from "./components/ConditionalRendering.vue";
-import ListRendering from "./components/ListRendering.vue";
+// import ListRendering from "./components/ListRendering.vue";
+import MethodEvent from "./components/MethodEvent.vue";
 
 export default {
   name: "App",
   components: {
     // Binding,
     // ConditionalRendering,
-    ListRendering,
+    // ListRendering,
+    MethodEvent,
   },
 };
 </script>
