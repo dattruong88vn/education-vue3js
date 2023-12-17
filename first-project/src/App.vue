@@ -25,17 +25,33 @@
   <br />
   <div>
     <h2>Binding class</h2>
-    <div v-bind:class="isPromotion ? 'promoted' : 'not-promoted'">
+    <h4 v-bind:class="isPromotion ? 'promoted' : 'not-promoted'">
       v-bind:class with condition
-    </div>
-    <div
+    </h4>
+    <h4
       v-bind:class="{
         'not-promoted': true,
         'p-md': true,
       }"
     >
       v-bind:class with object
-    </div>
+    </h4>
+  </div>
+  <br />
+  <div>
+    <h2>Binding Style</h2>
+    <h4
+      v-bind:style="{
+        color: hightlightColor,
+        fontWeight: hightlightWeight,
+        'font-size': hightlightSize,
+      }"
+    >
+      Object
+    </h4>
+    <h4 v-bind:style="hightlightObject">Object 2</h4>
+    <h4 v-bind:style="[baseStyleObject, successStyleObject]">Array</h4>
+    <h4 v-bind:style="[baseStyleObject, dangerStyleObject]">Array</h4>
   </div>
 </template>
 
@@ -53,6 +69,27 @@ export default {
       itemClass: "p-md",
       isDisabled: true,
       isPromotion: true,
+      // style
+      hightlightColor: "red",
+      hightlightWeight: "bold",
+      hightlightSize: "20px",
+      hightlightObject: {
+        color: "orange",
+        fontSize: "30px",
+        fontWeight: "bold",
+      },
+      baseStyleObject: {
+        color: "purple",
+        fontSize: "20px",
+      },
+      successStyleObject: {
+        backgroundColor: "green",
+        border: "1px solid red",
+      },
+      dangerStyleObject: {
+        backgroundColor: "red",
+        border: "1px solid green",
+      },
     };
   },
 };

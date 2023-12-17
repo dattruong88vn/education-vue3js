@@ -50,3 +50,16 @@ Ví dụ cho object:
     ...
 }">Some text</div>
 ```
+
+## Binding style
+
+Sử dụng directive `v-bind:class`
+Có 2 cách để bind class: dùng Array hoặc Object
+
+```
+// object syntax
+<div v-bind:style="{
+    color: <data-name>
+    // ...
+}">Inline style by object</div>
+```
