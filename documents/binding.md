@@ -62,4 +62,9 @@ Có 2 cách để bind class: dùng Array hoặc Object
     color: <data-name>
     // ...
 }">Inline style by object</div>
+<div v-bind:style="objectStyle">Inline style by object</div>
+
+// array
+<div v-bind:style="[objectStyle1, objectStyle2]">Inline style by object</div>
+
 ```

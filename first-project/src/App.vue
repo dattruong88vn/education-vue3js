@@ -14,34 +14,34 @@
   <br />
   <div>
     <h2>Binding Attribute</h2>
-    <h4 v-bind:id="headingId">Heading 4 Text</h4>
-    <div v-bind:class="wrapperClass">
-      <div v-bind:class="itemClass">1</div>
-      <div v-bind:class="itemClass">2</div>
+    <h4 :id="headingId">Heading 4 Text</h4>
+    <div :class="wrapperClass">
+      <div :class="itemClass">1</div>
+      <div :class="itemClass">2</div>
       <div class="p-md">3</div>
     </div>
-    <input v-bind:disabled="isDisabled" placeholder="name" />
+    <input :disabled="isDisabled" placeholder="name" />
   </div>
   <br />
   <div>
     <h2>Binding class</h2>
-    <h4 v-bind:class="isPromotion ? 'promoted' : 'not-promoted'">
-      v-bind:class with condition
+    <h4 :class="isPromotion ? 'promoted' : 'not-promoted'">
+      :class with condition
     </h4>
     <h4
-      v-bind:class="{
+      :class="{
         'not-promoted': true,
         'p-md': true,
       }"
     >
-      v-bind:class with object
+      :class with object
     </h4>
   </div>
   <br />
   <div>
     <h2>Binding Style</h2>
     <h4
-      v-bind:style="{
+      :style="{
         color: hightlightColor,
         fontWeight: hightlightWeight,
         'font-size': hightlightSize,
@@ -49,9 +49,9 @@
     >
       Object
     </h4>
-    <h4 v-bind:style="hightlightObject">Object 2</h4>
-    <h4 v-bind:style="[baseStyleObject, successStyleObject]">Array</h4>
-    <h4 v-bind:style="[baseStyleObject, dangerStyleObject]">Array</h4>
+    <h4 :style="hightlightObject">Object 2</h4>
+    <h4 :style="[baseStyleObject, successStyleObject]">Array</h4>
+    <h4 :style="[baseStyleObject, dangerStyleObject]">Array</h4>
   </div>
 </template>
 
