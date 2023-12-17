@@ -52,3 +52,14 @@ Key là unique được sử dụng để như một gợi ý cho Virtual DOM al
 Key attribute giúp cho Vue nhận biết được những items nào trong list có sự thay đổi, được thêm vào hoặc xoá đi, đóng vai trò quan trọng trong việc update UI chính xác và hiệu quả.
 
 Không sử dụng key với `v-for` chỉ phù hợp khi list render không liên quan đến DOM state hoặc children component state.
+
+#### Conditional List Rendering
+
+Sử dụng `v-for` và `template` tag để duyệt mảng.
+Bên trong mỗi `template` tag sử dụng `v-if` directive để conditional rendering các items.
+
+```
+<template v-for="name in names" :key="name">
+    <h4 v-if="name === 'Batman'">{{ name }}</h4>
+</template>
+```

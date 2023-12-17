@@ -37,6 +37,13 @@
       <span>{{ value }}</span>
     </template>
   </div>
+
+  <div>
+    <h2>Conditional List Rendering</h2>
+    <template v-for="name in names" :key="name">
+      <h4 v-if="name === 'Batman'">{{ name }}</h4>
+    </template>
+  </div>
 </template>
 
 <script>
