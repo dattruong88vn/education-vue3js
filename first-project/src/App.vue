@@ -3,7 +3,8 @@
   <!-- <ConditionalRendering /> -->
   <!-- <ListRendering /> -->
   <!-- <MethodEvent /> -->
-  <HandleEvent />
+  <!-- <HandleEvent /> -->
+  <FormHandling />
 </template>
 
 <script>
@@ -11,7 +12,8 @@
 // import ConditionalRendering from "./components/ConditionalRendering.vue";
 // import ListRendering from "./components/ListRendering.vue";
 // import MethodEvent from "./components/MethodEvent.vue";
-import HandleEvent from "./components/HandleEvent.vue";
+// import HandleEvent from "./components/HandleEvent.vue";
+import FormHandling from "./components/FormHandling.vue";
 
 export default {
   name: "App",
@@ -20,7 +22,8 @@ export default {
     // ConditionalRendering,
     // ListRendering,
     // MethodEvent,
-    HandleEvent,
+    // HandleEvent,
+    FormHandling,
   },
 };
 </script>
@@ -30,7 +33,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
