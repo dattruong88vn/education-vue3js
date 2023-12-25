@@ -5,7 +5,8 @@
   <!-- <MethodEvent /> -->
   <!-- <HandleEvent /> -->
   <!-- <FormHandling /> -->
-  <BonusDirective />
+  <!-- <BonusDirective /> -->
+  <ComputedProperties />
 </template>
 
 <script>
@@ -15,7 +16,8 @@
 // import MethodEvent from "./components/MethodEvent.vue";
 // import HandleEvent from "./components/HandleEvent.vue";
 // import FormHandling from "./components/FormHandling.vue";
-import BonusDirective from "./components/Bonus-directive.vue";
+// import BonusDirective from "./components/Bonus-directive.vue";
+import ComputedProperties from "./components/ComputedProperties.vue";
 
 export default {
   name: "App",
@@ -26,7 +28,8 @@ export default {
     // MethodEvent,
     // HandleEvent,
     // FormHandling,
-    BonusDirective,
+    // BonusDirective,
+    ComputedProperties,
   },
 };
 </script>
