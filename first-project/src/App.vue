@@ -4,7 +4,8 @@
   <!-- <ListRendering /> -->
   <!-- <MethodEvent /> -->
   <!-- <HandleEvent /> -->
-  <FormHandling />
+  <!-- <FormHandling /> -->
+  <BonusDirective />
 </template>
 
 <script>
@@ -13,7 +14,8 @@
 // import ListRendering from "./components/ListRendering.vue";
 // import MethodEvent from "./components/MethodEvent.vue";
 // import HandleEvent from "./components/HandleEvent.vue";
-import FormHandling from "./components/FormHandling.vue";
+// import FormHandling from "./components/FormHandling.vue";
+import BonusDirective from "./components/Bonus-directive.vue";
 
 export default {
   name: "App",
@@ -23,7 +25,8 @@ export default {
     // ListRendering,
     // MethodEvent,
     // HandleEvent,
-    FormHandling,
+    // FormHandling,
+    BonusDirective,
   },
 };
 </script>
