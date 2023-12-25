@@ -18,6 +18,19 @@
   </div>
   <hr />
   <button @click="addItem">Add Item</button>
+  <br />
+  <hr />
+  <div>
+    <h4>Conditional Rendering List with v-for and v-if</h4>
+    <div v-for="item in items" :key="item.id">
+      <span v-if="item.price > 100"> {{ item.name }} - {{ item.price }} </span>
+    </div>
+    <hr />
+    <h4>Conditional Rendering List with Computed Properties</h4>
+    <div v-for="item in expensiveItems" :key="item.id">
+      {{ item.name }} - {{ item.price }}
+    </div>
+  </div>
 </template>
 
 <script>
@@ -62,6 +75,9 @@ export default {
       return this.items.reduce((sum, item) => {
         return (sum += item.price);
       }, 0);
+    },
+    expensiveItems() {
+      return this.items.filter((item) => item.price > 100);
     },
   },
 };
