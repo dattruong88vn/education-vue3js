@@ -3,6 +3,7 @@
     <h3>Fullname interpolation: {{ lastName }} {{ firstName }}</h3>
     <h3>Fullname computed: {{ fullName }}</h3>
     <h3>Fullname computed object: {{ name.fullName }}</h3>
+    <button @click="lastName = 'Truong'">Change Name</button>
     <hr />
     <h3>
       Total cost:
@@ -13,6 +14,7 @@
       }}
     </h3>
     <h3>Total cost computed: {{ totalCost }}</h3>
+    <h3>Total cose method: {{ getTotal() }}</h3>
   </div>
   <hr />
   <button @click="addItem">Add Item</button>
@@ -39,6 +41,12 @@ export default {
         price: Math.random() * 100,
       });
     },
+    getTotal() {
+      console.log("method getTotal");
+      return this.items.reduce((sum, item) => {
+        return (sum += item.price);
+      }, 0);
+    },
   },
   computed: {
     fullName() {
@@ -50,6 +58,7 @@ export default {
       };
     },
     totalCost() {
+      console.log("computed totalCost");
       return this.items.reduce((sum, item) => {
         return (sum += item.price);
       }, 0);
