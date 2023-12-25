@@ -1,9 +1,12 @@
 <template>
   <div>
     <h3>Fullname interpolation: {{ lastName }} {{ firstName }}</h3>
-    <h3>Fullname computed: {{ fullName }}</h3>
-    <h3>Fullname computed object: {{ name.fullName }}</h3>
-    <button @click="lastName = 'Truong'">Change Name</button>
+    <h3>Fullname computed function: {{ fullName }}</h3>
+    <button @click="lastName = 'Truong'">Change Name Static Text</button>
+    <h3>Fullname computed object: {{ fullNameObject }}</h3>
+    <button @click="changeFullNameSetterComputed">
+      Change name through set function
+    </button>
     <hr />
     <h3>
       Total cost:
@@ -60,15 +63,25 @@ export default {
         return (sum += item.price);
       }, 0);
     },
+    changeFullNameSetterComputed() {
+      this.fullNameObject = "Dat 09";
+    },
   },
   computed: {
     fullName() {
-      return this.lastName + this.firstName;
+      return this.lastName + " " + this.firstName;
     },
-    name() {
-      return {
-        fullName: this.lastName + this.firstName,
-      };
+    fullNameObject: {
+      get() {
+        return this.lastName + " " + this.firstName;
+      },
+      set(value) {
+        // fullName is combined from lastName and firstName
+        // split value and assign to lastName and firstName
+        const names = value.split(" ");
+        this.lastName = names[0];
+        this.firstName = names[1];
+      },
     },
     totalCost() {
       console.log("computed totalCost");

@@ -16,6 +16,11 @@ Là những Properties có thể được bind vào template tương tự như d
 
 Có tác dụng lớn đối với performance, khi nó được cached calculation và chỉ được update khi các dependencies của nó thay đổi (tương tự useMemo và useCallback trong React).
 
+Mỗi property có thể được khai báo dưới 2 dạng:
+
+- `function`: readonly
+- `object`: có thể khai báo getter (read computed props) và setter (update computed props)
+
 Ví dụ:
 
 ```
@@ -97,3 +102,38 @@ export default {
 
 - Nếu sử dụng method `{{ getTotal() }}` thì nó vẫn thực thi và tính toán lại giá trị `total`.
 - Nếu sử dụng computed, nó sẽ cache lại giá trị `total` trước đó và ko tính toán lại --> tối ưu performance.
+
+###### Computed Props với getter và setter
+
+- Khai báo computed dưới dạng `object` có chứa 2 method `get` và `set`.
+
+- Method `get` tương tự như trường hợp khai báo computed dưới dạng function, return về data mong muốn.
+- Method `set(value)` nhận vào value chính là fullName
+  - Do fullName được tạo từ firstName và lastName nên cần cắt chuỗi và update 2 data này.
+
+```
+computed: {
+    fullName: {
+        get() {
+            return this.lastName + this.firstName
+        },
+        set(value) {
+            const names = value.split(" ");
+            this.lastName = names[0];
+            this.firstName = names[1];
+        }
+    }
+},
+```
+
+- Tiếp theo, tạo 1 method để update computed fullName:
+
+```
+methods: {
+    updateName() {
+        this.fullName = "Some Text"
+    }
+}
+```
+
+- Cuối cùng chỉ cần thêm event để gọi đến method `updateName` là có thể `set` được data cho computed props.
