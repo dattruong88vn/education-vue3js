@@ -4,10 +4,10 @@
         {{ JSON.stringify(formValues, null, 3) }}
     </pre>
   </div>
-  <form @submit="submitForm">
+  <form @submit.prevent="submitForm">
     <div>
       <label for="name">Name</label>
-      <input id="name" type="text" v-model="formValues.name" />
+      <input id="name" type="text" v-model.trim.lazy="formValues.name" />
     </div>
 
     <div>
@@ -100,6 +100,16 @@
     </div>
 
     <div>
+      <label for="age">Age</label>
+      <input
+        id="age"
+        type="number"
+        v-model.number="formValues.age"
+        @keyup.enter="submitForm"
+      />
+    </div>
+
+    <div>
       <button>Submit</button>
     </div>
   </form>
@@ -118,12 +128,13 @@ export default {
         remoteWork: "no",
         skills: [],
         yearsOfExp: "",
+        age: null,
       },
     };
   },
   methods: {
-    submitForm(event) {
-      event.preventDefault();
+    submitForm() {
+      // event.preventDefault();
       console.log(toRaw(this.formValues));
     },
   },
