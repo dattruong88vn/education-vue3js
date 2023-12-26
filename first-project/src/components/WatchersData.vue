@@ -9,7 +9,28 @@
     </div>
   </div>
   <div>
+    <h2>Watch whan has changed</h2>
+    <label>Name</label>
     <input type="text" v-model="name" />
+  </div>
+  <div>
+    <h2>Watch immidiate</h2>
+    <label>Movie</label>
+    <input type="text" v-model="movie" />
+  </div>
+  <div>
+    <h2>Watch deep inside object</h2>
+    <div>
+      <label>Title</label>
+      <input type="text" v-model="movieInfo.title" />
+    </div>
+    <div>
+      <label>Author</label>
+      <input type="text" v-model="movieInfo.author" />
+    </div>
+  </div>
+  <div>
+    <button @click="movieList.push('Wonder Woman')">Add movie</button>
   </div>
 </template>
 
@@ -20,6 +41,13 @@ export default {
     return {
       volume: 0,
       name: "",
+      movie: "Thanh Dat",
+      timeOut: null,
+      movieInfo: {
+        author: "",
+        title: "",
+      },
+      movieList: ["Batman", "Superman"],
     };
   },
   methods: {},
@@ -47,6 +75,33 @@ export default {
       ) {
         alert("Watchers multidata");
       }
+    },
+    movie: {
+      handler(newMovie) {
+        if (this.timeOut) clearTimeout(this.timeOut);
+
+        this.timeOut = setTimeout(() => {
+          console.log(`Call api with movie name ${newMovie}`);
+        }, 1000);
+      },
+      immediate: true,
+    },
+    movieInfo: {
+      handler(newData) {
+        console.log(
+          `Change data inside object ${newData.title} and ${newData.author}`
+        );
+      },
+      deep: true,
+    },
+    movieList: {
+      handler(newList) {
+        console.log(`Call api with list ${newList}`);
+      },
+      deep: true,
+    },
+    beforeDestroy() {
+      clearTimeout(this.timeOut);
     },
   },
 };
