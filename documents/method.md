@@ -1,6 +1,6 @@
 ## METHOD
 
-Trong `script` tag, object được export default thêm field methods bên cạnh data function.
+Trong object `export default` của thẻ `<script`, thêm thuộc tính `methods` là một object.
 
 Methods là một object, mỗi key của object này chính là một function có thể sử dụng được bên trong `template` tag.
 

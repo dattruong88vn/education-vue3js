@@ -21,6 +21,8 @@ Mỗi property có thể được khai báo dưới 2 dạng:
 - `function`: readonly
 - `object`: có thể khai báo getter (read computed props) và setter (update computed props)
 
+###### Cách khai báo: trong object `export default` của thẻ `<script`, thêm thuộc tính `computed` là một object.
+
 Ví dụ:
 
 ```
