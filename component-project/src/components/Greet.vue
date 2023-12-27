@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h2>Hello {{ name }} a.k.a {{ heroName }}</h2>
+    <h2 v-bind="$attrs">
+      Hello {{ name }} a.k.a {{ heroName }} has {{ age }} and is
+      {{ isOld ? "old" : "young" }}
+    </h2>
   </div>
 </template>
 
@@ -10,7 +13,16 @@ export default {
   props: {
     name: String,
     heroName: String,
+    age: {
+      type: Number,
+      default: 20,
+    },
+    isOld: {
+      type: Boolean,
+      default: false,
+    },
   },
+  inheritAttrs: false,
 };
 </script>
 
