@@ -56,9 +56,14 @@ Trong ví dụ trên, component Greet nhận vào 2 props là `name` và `hero-n
 
 ```
 ...
-age: {
-    type: Number,
-    default: 20,
+export default {
+    ...
+    props: {
+        age: {
+            type: Number,
+            default: 20,
+        }
+    }
 }
 ...
 ```
