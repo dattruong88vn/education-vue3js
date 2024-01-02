@@ -1,35 +1,14 @@
 <template>
-  <!-- <Components /> -->
-  <div>App component username: {{ username }}</div>
-
-  <ComponentA />
+  <ParentComponent />
 </template>
 
 <script>
-// import Components from "./components/Components.vue";
-import ComponentA from "./components/nestedComponent/ComponentA.vue";
+import ParentComponent from "./components/customComponentEvent/ParentComponent.vue";
 
 export default {
   name: "App",
-  data() {
-    return {
-      username: "Thanh Dat",
-    };
-  },
   components: {
-    // Components,
-    ComponentA,
-  },
-  computed: {
-    datName() {
-      return "Dat Cho Dien";
-    },
-  },
-  provide() {
-    return {
-      username: this.username,
-      datName: this.datName,
-    };
+    ParentComponent,
   },
 };
 </script>
