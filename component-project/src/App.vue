@@ -1,14 +1,35 @@
 <template>
-  <Components />
+  <!-- <Components /> -->
+  <div>App component username: {{ username }}</div>
+
+  <ComponentA />
 </template>
 
 <script>
-import Components from "./components/Components.vue";
+// import Components from "./components/Components.vue";
+import ComponentA from "./components/nestedComponent/ComponentA.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      username: "Thanh Dat",
+    };
+  },
   components: {
-    Components,
+    // Components,
+    ComponentA,
+  },
+  computed: {
+    datName() {
+      return "Dat Cho Dien";
+    },
+  },
+  provide() {
+    return {
+      username: this.username,
+      datName: this.datName,
+    };
   },
 };
 </script>
