@@ -1,10 +1,9 @@
 <template>
-  <Input v-model="name" />
+  <Parent />
 </template>
 
 <script>
-import Input from "./components/vmodelCustomComponent/Input.vue";
-
+import Parent from "./components/slots/Parent.vue";
 export default {
   name: "App",
   data() {
@@ -12,9 +11,7 @@ export default {
       name: "",
     };
   },
-  components: {
-    Input,
-  },
+  components: { Parent },
 };
 </script>
 
