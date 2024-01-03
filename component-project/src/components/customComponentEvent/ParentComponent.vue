@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="handleClosePopup(true)">Open popup</button>
+    <button @click="showPopup = true">Open popup</button>
     <div v-show="showPopup">
       <Popup @closePopup="handleClosePopup" />
     </div>
@@ -19,7 +19,8 @@ export default {
   },
   methods: {
     handleClosePopup(value) {
-      this.showPopup = value;
+      this.showPopup = false;
+      console.log({ value });
     },
   },
   components: {

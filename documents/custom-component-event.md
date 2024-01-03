@@ -57,3 +57,19 @@ export default {
 // Con
 <button @click="$emit('closePopup', false)">Close Popup</button>
 ```
+
+#### Validate Emit Event từ Child Component
+
+Trong Component Con, update `emits` trong export default từ Array sang Object.
+Mỗi key trong object này chính là tên của `event` được emit lên component cha, và value là tương ứng là một `function`.
+Function nhận vào tham số chính là tham số gửi lên component cha khi emit event --> Validate giá trị trong function này.
+
+```
+emits: {
+  closePopup: (name) => {
+    return !!name;
+  },
+},
+```
+
+Trong ví dụ trên, function return về `true | false`, nếu false thì trên browser sẽ hiển thị `warning: event validation failed for ...`.
