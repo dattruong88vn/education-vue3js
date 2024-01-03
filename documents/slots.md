@@ -36,3 +36,47 @@ Ví dụ:
     </div>
 </template>
 ```
+
+#### Multiple slot
+
+Component Cha có thể truyền nhiều content vào Component con tương ứng với nhiều slot khác nhau.
+
+Để view có thể nhận biết được từng cặp `content-slot`, chúng ta thêm thuộc tính `name` vào thẻ slot `<slot name="card-header"></slot>.
+
+Các thuộc tính `name` này phải unique và Vue cho phép 1 slot không cần đặt tên và nó sẽ được chọn làm slot mặc định.
+
+```
+<template>
+    <div>
+        // default slot
+        <slot></slot>
+    <div>
+    <div>
+        <slot name="name1"></slot>
+    </div>
+    <div>
+        <slot name="name2"></slot>
+    </div>
+</template>
+```
+
+Trong component Cha, bên trong cặp thẻ opening-closing thay vì truyền một content như ở trên thì phải tách thành nhiều `template`, mỗi template sẽ chứa content tương ứng với từng `slot`.
+
+Để connect template và slot, sử dụng `v-slot:<name-slot>`, đối với slot default thì cú pháp `v-slot:default`
+
+```
+<template>
+    <ComponentCon>
+        <template v-slot:default>
+            Content Slot Default
+        </template>
+        <template v-slot:name1>
+            Content Slot name 1
+        </template>
+        <template v-slot:name2>
+            Content Slot name 2
+        </template>
+    </ComponentCon>
+
+</template>
+```

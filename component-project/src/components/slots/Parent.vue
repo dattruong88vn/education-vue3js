@@ -1,9 +1,10 @@
 <template>
-  <Children />
-  <Children> Text only </Children>
-  <Children> <h2>Text in h2 element</h2></Children>
   <Children>
-    <img src="https://picsum.photos/200" />
+    <template v-slot:header> Header </template>
+    <template v-slot:default>
+      <img src="https://picsum.photos/200" />
+    </template>
+    <template v-slot:footer> Footer </template>
   </Children>
 </template>
 
