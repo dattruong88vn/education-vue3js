@@ -73,3 +73,44 @@ emits: {
 ```
 
 Trong ví dụ trên, function return về `true | false`, nếu false thì trên browser sẽ hiển thị `warning: event validation failed for ...`.
+
+#### Component và v-model
+
+- Vue cung cấp `v-model` để sử dụng cùng với form và input.
+- Tuy nhiên trong thực tế, không bao giờ chúng ta làm việc trực tiếp với thẻ `input` mặc định của HTML. Thay vào đó, chúng ta sẽ build một `custom input` component để style theo đúng yêu cầu, đồng thời thêm một vài logic để có thể sử dụng trên toàn app.
+- Vấn đề đặt ra là làm sao có thể sử dụng `v-model` trên những `custom-input` component này.
+
+```
+<Input v-model="name" />
+```
+
+Phân tích vấn đề:
+
+- Khi thêm thuộc tính `v-model` cho một `custom-component`, mặc định nó sẽ không hiểu behavior của component.
+- Do đó cần phải truyền được data từ `data-property` trong component Cha vào `input` element trong component Con thông qua `v-model`. Đồng thời khi `onChange` data trong `input` element thì sẽ emit một event lên component Cha để update `data-property`.
+
+Cách thực hiện:
+
+- Khi thêm thuộc tính `v-model` cho component Con thì mặc định component Con sẽ nhận được 1 props có tên là `modelValue`. Cần khai báo props này trong Component Con.
+
+```
+props: {
+  modelValue: String,
+},
+```
+
+- Ngoài ra, Vue cũng định nghĩa sẵn một `emit-event` khi thêm thuộc tính `v-model` cho component con, chúng ta cũng cần phải khai báo emit cho event này
+
+```
+emits: ["update:modelValue"],
+```
+
+- Sau khi khai báo, việc tiếp theo và gắn giá trị `modelValue` và emit event `update:modelValue` vào thẻ input trong Component Con:
+
+```
+<input
+  type="text"
+  :value="modelValue"
+  @input="$emit('update:modelValue', $event.target.value)"
+/>
+```

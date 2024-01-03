@@ -1,14 +1,19 @@
 <template>
-  <ParentComponent />
+  <Input v-model="name" />
 </template>
 
 <script>
-import ParentComponent from "./components/customComponentEvent/ParentComponent.vue";
+import Input from "./components/vmodelCustomComponent/Input.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      name: "",
+    };
+  },
   components: {
-    ParentComponent,
+    Input,
   },
 };
 </script>
