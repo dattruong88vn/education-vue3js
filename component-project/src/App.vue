@@ -1,10 +1,9 @@
 <template>
-  <h4>App Text Style</h4>
-  <ChildStyle />
+  <GroupTab />
 </template>
 
 <script>
-import ChildStyle from "./components/ChildStyle.vue";
+import GroupTab from "./components/dynamicComponent/GroupTab.vue";
 
 export default {
   name: "App",
@@ -13,11 +12,11 @@ export default {
       name: "",
     };
   },
-  components: { ChildStyle },
+  components: { GroupTab },
 };
 </script>
 
-<style scoped>
+<style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,9 +24,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-
-h4 {
-  color: orange;
 }
 </style>

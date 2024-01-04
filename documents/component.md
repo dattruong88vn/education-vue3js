@@ -124,3 +124,32 @@ Mặc định khi thêm các attribute này, Vue sẽ tự động add vào root
     </div>
 </template>
 ```
+
+###### Dynamic Component
+
+Vue cung cấp một tính năng để có thể dynamic Component theo mong muốn.
+
+Sử dụng thẻ `component` kèm thuộc tính `v-bind:is="<name-component>"`
+
+```
+<component :is="TabA"/>
+```
+
+###### Cache Dynamic Component
+
+Đặt vấn đề:
+sử dụng dynamic component để hiển thị dynamic content theo tab list.
+Một hoặc nhiều content là form chứa thông tin user nhập vào.
+Sau khi nhập thông tin và chuyển tab thì thông tin đã nhập sẽ bị mất.
+
+Lý do:
+Mỗi khi dynamic component thì Vue sẽ tạo ra một instance mới của component nên không cache lại được data trước đó.
+
+Cách giải quyết:
+Sử dụng thẻ `keep-alive` bọc bên ngoài thẻ `component` để vue cache lại tất cả dynamic component.
+
+```
+<keep-alive>
+    <component :is="TabA" />
+</keep-alive>
+```
