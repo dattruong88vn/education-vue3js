@@ -80,3 +80,32 @@ Trong component Cha, bên trong cặp thẻ opening-closing thay vì truyền m�
 
 </template>
 ```
+
+#### Slot Prop
+
+Component Con có thể pass data đến component Cha thông qua `props` của slot. Từ đó Component Cha có thể quyết định content của Component con dựa vào data bên trong component con.
+
+Ví dụ,
+
+- Một component NameList hiển thị ra UI danh sách bao gồm firstName và lastName.
+- Muốn hiển thị danh sách này ở một component khác với format chỉ bao gồm firstName.
+
+###### Cách thực thiện
+
+- Trong Component Con, sử dụng `v-bind:<prop-name>="<prop-value>"` để khai báo các prop muốn truyền ra ngoài theo slot
+
+```
+<slot :firstName="name.firstName" :lastName="name.lastName"></slot>
+```
+
+- Ở component cha, dùng cặp thẻ opening/closing để gọi component con. Bên trong cặp thẻ khai báo cặp thẻ `template` với thuộc tính `v-slot:<slot-name>='<slotProps>'` để chỉ định đến đúng slot tương ứng.
+- `slotProps` là tên của object chứa toàn bộ props được truyền ra từ component con. Có thể đặt tên tuỳ thích
+- Bên trong thẻ `template` tuỳ chỉnh content muốn hiển thị ở component con.
+
+```
+<ChildrenList>
+    <template v-slot:default="slotProps">
+        {{ slotProps.firstName }}
+    </template>
+</ChildrenList>
+```
