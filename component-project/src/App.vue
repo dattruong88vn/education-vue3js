@@ -1,9 +1,11 @@
 <template>
-  <Parent />
+  <h4>App Text Style</h4>
+  <ChildStyle />
 </template>
 
 <script>
-import Parent from "./components/slots/Parent.vue";
+import ChildStyle from "./components/ChildStyle.vue";
+
 export default {
   name: "App",
   data() {
@@ -11,11 +13,11 @@ export default {
       name: "",
     };
   },
-  components: { Parent },
+  components: { ChildStyle },
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,5 +25,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h4 {
+  color: orange;
 }
 </style>
