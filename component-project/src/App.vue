@@ -1,9 +1,9 @@
 <template>
-  <GroupTab />
+  <Portal />
 </template>
 
 <script>
-import GroupTab from "./components/dynamicComponent/GroupTab.vue";
+import Portal from "./components/Portal.vue";
 
 export default {
   name: "App",
@@ -12,7 +12,7 @@ export default {
       name: "",
     };
   },
-  components: { GroupTab },
+  components: { Portal },
 };
 </script>
 
