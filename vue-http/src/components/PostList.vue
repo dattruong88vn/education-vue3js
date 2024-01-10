@@ -1,5 +1,5 @@
 <template>
-  <button @click="getPosts">Load posts</button>
+  <!-- <button @click="getPosts">Load posts</button> -->
   <h3 v-if="errorMessage">{{ errorMessage }}</h3>
   <div v-for="post in posts" :key="post.id">
     <h3>{{ post.id }}. {{ post.title }}</h3>
@@ -31,6 +31,9 @@ export default {
         this.errorMessage = "Something went wrong";
       }
     },
+  },
+  created() {
+    this.getPosts();
   },
 };
 </script>
