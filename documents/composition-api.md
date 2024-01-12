@@ -26,9 +26,9 @@ Mặc dù cả Vue 2 và Vue 3 đều cung cấp tính năng `Mixins` để th�
 
 Để khắc phục điều này, `Composition API` được giới thiệu trong Vue 3.
 
-#### Cách sử dụng
+#### Replace Data Property
 
-###### Replace Data Property
+###### ref function
 
 Vue Component có thể kết hợp giữa Options API và Composition API cùng lúc.
 
@@ -66,3 +66,58 @@ setup() {
 ```
 
 Khi hiển thị data từ Compotion API, trong `template` không cần trỏ đến value: `{{ c_firstName.value }}`. Vue sẽ tự unpack và hiển thị đúng value giúp chúng ta `{{ c_firstName }}`
+
+###### reactive function
+
+Khi sử dụng `ref()` để tạo các reactive refence, khi muốn update hoặc kết hợp nhiều data với nhau, chúng ta đều phải access đến key value trong mỗi object.
+
+```
+const greetHero = `Hello ${c_firstName.value} - ${c_lastName.value} a.k.a ${c_heroName.value}`;
+```
+
+Điều này khá bất tiện trong trường hợp có nhiều data và logic, việc lặp lại code này không tốt. Và đó là lý do tại sao cần `reactive function`.
+
+Tương tự `ref`, import `reactive` function từ vue.
+
+`Reactive` function nhận vào tham số là một object, mỗi key trong object này chính là một reactive data và return về chính object này.
+
+```
+import { reactive } from 'vue';
+
+export default {
+    setup() {
+        const state = reactive({
+            firstName: "Dat",
+            lastName: "Truong",
+            heroName: "Dat Crazy Dog"
+        })
+    }
+}
+```
+
+Để binding các gía trị trả về từ `reactive`, cũng return về trong `setup function`.
+
+###### So sánh ref và reactive function
+
+1. Do `reactive` function chỉ tham số là object, nên khi data là các kiểu giá trị cơ bản như string, number, boolean và không liên quan nhau hoặc số lượng ít thì nên sử dụng `ref` .
+
+Ví dụ cần lưu trữ trạng thái login:
+
+- ref: const isLoggin = ref(false)
+- reactive: const isLogginReactive = reactive({value: false}).
+
+Có thể thấy, để access hoặc cập nhật giá trị loggin:
+
+- ref: isLoggin.value
+- reactive: isLogginReactive.value
+
+2. Trường hợp có nhiều giá trị tương đồng hoặc có liên quan với nhau, chúng ta nên sử dụng `reactive` để gom nhóm các giá trị này vào chung 1 object.
+
+Ví dụ: thay vì sử dụng `firstName`, `lastName` thành 2 biến riêng rẽ khi sử dụng, chúng ta có thể gom nhóm thành `profile` object.
+
+```
+const profile = reactive({
+    firstName: "",
+    lastName:""
+})
+```
