@@ -87,7 +87,17 @@ setup() {
 }
 ```
 
-TỰ NHẬN XÉT VỀ FUNCTION `toRefs`:
+Trường hợp binding data từ `ref()` và các attribute của object từ `reactive()`, thực hiện như sau:
 
-- Chỉ nhận 1 tham số là `reactive reference object` nên CÓ LẼ không phù hợp nếu có nhiều object được tạo ra từ `reactive` function
-- Nó khá bị bó buộc chỉ trong 1 state duy nhất.
+```
+const count = ref(0);
+const state = reactive({
+    firstName: "Dat",
+    lastName: "Truong"
+});
+
+return {
+    count,
+    ...toRefs(state)
+}
+```
