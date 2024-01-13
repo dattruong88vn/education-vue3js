@@ -5,14 +5,22 @@
   </div>
   <hr />
   <div>
-    <h2>Composition</h2>
+    <h2>Composition: ref</h2>
     <input type="text" placeholder="first name" v-model="firstName" />
     <input type="text" placeholder="last name" v-model="lastName" />
+  </div>
+  <hr />
+  <div>
+    <h2>Composition: reactive</h2>
+    <input type="text" placeholder="first name" v-model="reactiveFirstName" />
+    <input type="text" placeholder="last name" v-model="reactiveLastName" />
+    <input type="text" placeholder="hero name" v-model="options.heroName" />
   </div>
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref, watch, reactive, toRefs } from "vue";
+import _ from "lodash";
 
 export default {
   name: "Watchers-Composition",
@@ -37,7 +45,38 @@ export default {
       },
       { immediate: true }
     );
-    return { firstName, lastName };
+
+    // reactive
+    const state = reactive({
+      reactiveFirstName: "",
+      reactiveLastName: "",
+      options: {
+        heroName: "",
+      },
+    });
+
+    watch(
+      () => {
+        return _.cloneDeep(state);
+      },
+      (newVal, oldVal) => {
+        console.log("Old:", oldVal);
+        console.log("New:", newVal);
+      }
+    );
+
+    // watch(
+    //   () => {
+    //     return { ...state.options };
+    //   },
+    //   (newValue, oldValue) => {
+    //     console.log("reactive state option new", newValue);
+    //     console.log("reactive state option old", oldValue);
+    //   },
+    //   { deep: true }
+    // );
+
+    return { firstName, lastName, ...toRefs(state) };
   },
   data() {
     return {

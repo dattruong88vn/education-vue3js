@@ -156,7 +156,7 @@ setup() {
 
 Function `watch` nhận vào 3 tham số:
 
-- Thứ nhất: data cần watch. 1 data -> tên data, nhiều data -> Array.
+- Thứ nhất: data cần watch. 1 data -> tên data, nhiều data -> Array, object (từ `reactive` function) hoặc một thuộc tính của object -> `getter function` return về data tương ứng, nếu là object thì phải là clone object (deep clone);
 - Thứ hai: `callback function` được thực hiện khi data thay đổi. `Callback function` nhận vào 2 tham số là `newValue` và `oldValue`. Tuỳ thuộc vào tham số thứ nhất là theo dõi 1 hay nhiều data mà kiểu dữ liệu của `newValue` và `oldValue` là kiểu dữ liệu của data (trường hợp 1) hay là array (trường hợp nhiều)
 - Thứ ba: `object` chứa các tuỳ chọn như `immediate` hay `deep`.
 
@@ -177,6 +177,26 @@ setup() {
         console.log("Old Last name: ", oldValues[1]);
         console.log("new First name: ", newValues[0]);
         console.log("new Last name: ", newValues[1]);
+    })
+
+    const state = reactive({
+        reactiveFirstName: '',
+        reactiveLastName: "",
+        options: {
+            heroName: ""
+        }
+    })
+
+    <!-- object from reactive -->
+    watch(() => { ...state }, (newVal, oldval) => {
+        console.log("new": newVal);
+        console.log("old": oldVal)
+    })
+
+    <!-- attribute of object -->
+    watch(() => { ...state.options }, (newVal, oldval) => {
+        console.log("new": newVal);
+        console.log("old": oldVal)
     })
 }
 ```
