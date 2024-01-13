@@ -121,3 +121,31 @@ const profile = reactive({
     lastName:""
 })
 ```
+
+#### Replace Computed Property
+
+Để tạo ra data computed bằng `Composition API`, ta sử dụng method `computed` được import từ vue.
+
+Method `computed` có đặc điểm:
+
+- Return về giá trị cần computed, ta sẽ gán giá trị này vào 1 biến và export trong `setup()` function.
+- Nhận vào 1 tham số là một function, gọi là callback. Callback function này trả về giá trị computed.
+
+Ví dụ:
+
+```
+setup() {
+    const fName = ref('');
+    const lName = ref('');
+
+    const fullName = computed(() => {
+        return `${fName.value} ${lName.value}`
+    })
+
+    return {
+        fName,
+        lName,
+        fullName
+    }
+}
+```
