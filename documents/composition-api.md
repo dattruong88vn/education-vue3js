@@ -149,3 +149,34 @@ setup() {
     }
 }
 ```
+
+#### Replace Watcher
+
+Để `watch` một hoặc nhiều data khi làm việc với composition api, ta sử dụng function `watch` từ vue.
+
+Function `watch` nhận vào 3 tham số:
+
+- Thứ nhất: data cần watch. 1 data -> tên data, nhiều data -> Array.
+- Thứ hai: `callback function` được thực hiện khi data thay đổi. `Callback function` nhận vào 2 tham số là `newValue` và `oldValue`. Tuỳ thuộc vào tham số thứ nhất là theo dõi 1 hay nhiều data mà kiểu dữ liệu của `newValue` và `oldValue` là kiểu dữ liệu của data (trường hợp 1) hay là array (trường hợp nhiều)
+- Thứ ba: `object` chứa các tuỳ chọn như `immediate` hay `deep`.
+
+```
+setup() {
+    const firstName = ref("");
+    const lastName = ref("");
+
+    <!-- 1 data -->
+    watch(firstName, (newValue, oldValue) => {
+        <!-- Do something -->
+    }, { immediate: true, deep: false})
+
+    <!-- multidata -->
+    watch([firstName, lastName], (newValues, oldValues) => {
+        <!-- Do something -->
+        console.log("Old First name: ", oldValues[0]);
+        console.log("Old Last name: ", oldValues[1]);
+        console.log("new First name: ", newValues[0]);
+        console.log("new Last name: ", newValues[1]);
+    })
+}
+```
