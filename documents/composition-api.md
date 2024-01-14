@@ -286,3 +286,43 @@ setup(props) {
     })
 }
 ```
+
+#### Custom Event Component
+
+Để emit một custom event trong Component Con, sử dụng tham số thứ 2 của `setup()` function, được gọi là `context`
+
+Component Con
+
+```
+<button @click="handleEmit">Click</button>
+...
+setup(props, context) {
+
+    function handleEmit() {
+        context.emit(customEventName, params1, params2, ...);
+    }
+
+    return {
+        handleEmit
+    }
+}
+```
+
+Component Cha
+
+```
+<ComponentCon @customEventName="doSomeThingFromCustomEvent" />
+...
+
+setup() {
+    fucntion doSomeThingFromCustomEvent() {
+        // do something ...
+    }
+
+    return {
+        doSomeThingFromCustomEvent
+    }
+}
+```
+
+Object `context` chứa một số function hoặc object như `emit`, `slot`, `attrs`...

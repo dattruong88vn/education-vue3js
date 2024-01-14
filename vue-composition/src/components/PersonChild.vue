@@ -1,5 +1,6 @@
 <template>
   <div>Composition Prop computed: Hello {{ cFullName }}</div>
+  <button @click="handleEmitCustomEvent">Click</button>
 </template>
 
 <script>
@@ -15,15 +16,22 @@ export default {
       type: String,
     },
   },
-  setup(props) {
+  setup(props, context) {
     const cFullName = computed(() => {
       return `${props.firstName} ${props.lastName}`;
     });
 
+    function handleEmitCustomEvent() {
+      console.log({ context, cFullName });
+      context.emit("customEventName", cFullName.value);
+    }
+
     return {
       cFullName,
+      handleEmitCustomEvent,
     };
   },
+  emits: ["customEventName"],
 };
 </script>
 
