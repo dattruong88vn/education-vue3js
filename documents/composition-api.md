@@ -223,7 +223,7 @@ setup() {
 }
 ```
 
-#### Lưu ý
+###### Lưu ý
 
 Có thể sử dụng `Provide/Inject` cho:
 
@@ -231,3 +231,22 @@ Có thể sử dụng `Provide/Inject` cho:
 - Reactive data từ `ref` và `reactive` function.
 - Method
 - Computed
+
+#### Life Cycle với composition API
+
+Đối với `Options API`, mỗi `life cycle hook` là một options của object `export default`. Ngược lại, trong `composition API`, các life cycle hook là những function được import từ vue, và tên của các hook được thêm vào tiền tố `on_`.
+
+Các function này đều nhận vào tham số là một callback function.
+
+```
+import {
+    onBeforeMount,
+    onMounted,
+    onBeforeUpdate,
+    onUpdated,
+    onBeforeUnmount,
+    onUnmounted
+} from vue
+```
+
+2 hook có trong Options api là `beforeCreate` và `created` được lược bỏ trong Composition API. 2 hooks này được handle ngay bên trong `setup()` function.
