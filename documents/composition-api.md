@@ -200,3 +200,34 @@ setup() {
     })
 }
 ```
+
+#### Replace Provide - Inject
+
+###### Provide
+
+Sử dụng `provide` function từ vue. Trong `setup()`, thực thi `provide` với 2 tham số `label` và `data`;
+
+```
+setup() {
+    provide(key, value)
+}
+```
+
+###### Inject
+
+Sử dụng `inject` function từ vue. Trong `setup()` thực thi `inject` với 2 tham số: `label` và `default value` (cho trường hợp ko khai báo provide). Giá trị trả về chính là data từ provide.
+
+```
+setup() {
+    const data = inject(key, defaultValue);
+}
+```
+
+#### Lưu ý
+
+Có thể sử dụng `Provide/Inject` cho:
+
+- Static data
+- Reactive data từ `ref` và `reactive` function.
+- Method
+- Computed

@@ -1,14 +1,14 @@
 <template>
-  <Watchers />
+  <ProvideInject />
 </template>
 
 <script>
-import Watchers from "./components/Watchers.vue";
+import ProvideInject from "./components/ProvideInject.vue";
 
 export default {
   name: "App",
   components: {
-    Watchers,
+    ProvideInject,
   },
 };
 </script>
