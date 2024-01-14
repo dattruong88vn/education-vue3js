@@ -250,3 +250,25 @@ import {
 ```
 
 2 hook có trong Options api là `beforeCreate` và `created` được lược bỏ trong Composition API. 2 hooks này được handle ngay bên trong `setup()` function.
+
+#### Template Ref
+
+Tạo template ref thông qua `ref` function, và return về trong `setup()` function.
+
+```
+<input type="text" ref="inputRef" />
+...
+const inputRef = ref(null);
+
+return {
+    inputRef
+}
+```
+
+Để `focus` đến input element khi load page, sử dụng function `onMouted`.
+
+```
+onMounted(() => {
+    inputRef.value.focus();
+});
+```
