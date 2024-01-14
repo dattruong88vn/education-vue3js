@@ -272,3 +272,17 @@ onMounted(() => {
     inputRef.value.focus();
 });
 ```
+
+#### Props
+
+Khai báo `props` tương tự như Options API.
+
+Function `setup()` nhận vào tham số thứ nhất chính là `props object`.
+
+```
+setup(props) {
+    const fullName = computed(() => {
+        return `${props.firstName} + ${props.lastName}`
+    })
+}
+```
